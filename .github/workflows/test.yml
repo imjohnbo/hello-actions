@@ -13,11 +13,6 @@ jobs:
     - uses: octokit/request-action@v1.x
       with:
         route: POST /graphql
-        query: > 
-          "query {
-              user(login: '"imjohnbo'"){
-                name
-              }
-          }"
+        query: 'query { viewer { login name } }'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
