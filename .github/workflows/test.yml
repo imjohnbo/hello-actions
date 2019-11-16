@@ -10,15 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: octokit/request-action@v1.x
-      with:
-        route: POST /graphql
-        query: |
-          query {
-            viewer {
-              login
-              name
-            }
-          }
+    - name: Dump GitHub context
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
